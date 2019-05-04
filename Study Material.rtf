@@ -1,0 +1,278 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fnil\fcharset0 Consolas;\f1\fnil\fcharset0 Menlo-Regular;\f2\fswiss\fcharset0 Helvetica;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 HelveticaNeue;\f5\fswiss\fcharset0 ArialMT;
+}
+{\colortbl;\red255\green255\blue255;\red13\green0\blue129;\red235\green236\blue237;\red36\green38\blue41;
+\red37\green127\blue159;\red104\green26\blue29;\red114\green121\blue129;\red43\green39\blue19;\red100\green56\blue32;
+\red255\green255\blue255;\red196\green26\blue22;\red170\green13\blue145;\red0\green0\blue0;\red92\green38\blue153;
+\red63\green110\blue116;\red46\green13\blue110;\red38\green71\blue75;\red0\green116\blue0;\red0\green0\blue0;
+\red0\green0\blue0;\red70\green70\blue70;\red249\green249\blue249;\red87\green96\blue105;\red11\green96\blue192;
+\red255\green255\blue255;\red27\green29\blue31;}
+{\*\expandedcolortbl;;\cssrgb\c6275\c6275\c58039;\cssrgb\c93725\c94118\c94510;\cssrgb\c18824\c20000\c21176;
+\cssrgb\c16863\c56863\c68627;\cssrgb\c49020\c15294\c15294;\cssrgb\c52157\c54902\c57647;\cssrgb\c22353\c20000\c9412;\csgenericrgb\c39100\c22000\c12500;
+\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c77000\c10200\c8600;\csgenericrgb\c66500\c5200\c56900;\csgenericrgb\c0\c0\c0;\csgenericrgb\c35900\c14900\c60100;
+\csgenericrgb\c24700\c43100\c45600;\csgenericrgb\c18100\c5200\c43100;\csgenericrgb\c14900\c27800\c29400;\csgenericrgb\c0\c45600\c0;\cssrgb\c0\c0\c0\c84314;
+\cssrgb\c0\c0\c0\c4706;\cssrgb\c34510\c34510\c34510;\cssrgb\c98039\c98039\c98039;\cssrgb\c41569\c45098\c48627;\cssrgb\c0\c46667\c80000;
+\cssrgb\c100000\c100000\c100000;\cssrgb\c14118\c15294\c16078;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16940\viewh12440\viewkind0
+\deftab720
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+1. URL CONFIGURATION, SESSION, and dataTask
+\fs26 \
+\
+do\cf4  \{\
+    \cf2 var\cf4  request = \cf5 URLRequest\cf4 (url: URL(string: \cf6 "https://www.example.com/api/v1"\cf4 )!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: \cf6 10\cf4 .\cf6 0\cf4 )\
+\
+    \cf2 let\cf4  config = \cf5 URLSessionConfiguration\cf4 .\cf2 default\cf4 \
+    \cf2 let\cf4  session = \cf5 URLSession\cf4 (configuration: config)\
+\
+    \cf2 let\cf4  task = session.dataTask(with: request, completionHandler: \{(data, response, error) \cf2 in\cf4 \
+\
+         \cf2 if\cf4  error != \cf6 nil\cf4  \{\
+\
+              print(error!.localizedDescription)\
+\
+         \}\
+\
+         \cf2 else\cf4  \{\
+              print(response)\
+         \}\
+     \})\
+\
+    task.resume()\
+\}\
+\
+\cf2 catch\cf4  \{\
+\pard\pardeftab720\sl300\partightenfactor0
+\cf7 // handle the error\
+\pard\pardeftab720\sl300\partightenfactor0
+\cf4 \}\cf8 \
+\pard\pardeftab720\sl300\partightenfactor0
+
+\fs36 \cf8 2. SINGLE TON IN OBJECTIVE C
+\fs26 \
+.h Class\
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f1\fs28 \cf9 \cb10 \kerning1\expnd0\expndtw0 #import \cf11 <Foundation/Foundation.h>
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf12 @interface\cf13  singletonManager : \cf14 NSObject
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf12 @property\cf13 (\cf12 strong\cf13 ,\cf12 nonatomic\cf13 ) \cf14 NSString\cf13  *someProperty;
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf13 - (\cf12 instancetype\cf13 )init \cf12 __attribute__\cf13 ((unavailable(\cf11 "init not available, call sharedInstance instead"\cf13 )));
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 + (\cf12 instancetype\cf13 )\cf12 new\cf13  \cf12 __attribute__\cf13 ((unavailable(\cf11 "new not available, call sharedInstance instead"\cf13 )));
+\f2\fs24 \cf0 \
+\
+\
+
+\f1\fs28 \cf13 + (\cf12 id\cf13 )sharedManager;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 -(\cf12 void\cf13 )hellofiunction;
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf12 @end\
+\
+===========.\
+.m Class\
+
+\f0\fs26 \cf8 \cb3 \expnd0\expndtw0\kerning0
+\
+
+\f1\fs28 \cf9 \cb10 \kerning1\expnd0\expndtw0 #import \cf11 "singletonManager.h"
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf12 @interface\cf13  \cf15 singletonManager\cf13  ()
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf12 @end
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf12 @implementation\cf13  singletonManager
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf12 @synthesize\cf13  someProperty;
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf13 + (\cf12 id\cf13 )sharedManager \{
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf12 static\cf13  \cf15 singletonManager\cf13  *sharedMyManager = \cf12 nil\cf13 ;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf12 static\cf13  \cf14 dispatch_once_t\cf13  onceToken;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf9 dispatch_once\cf13 (&onceToken, ^\{
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13         sharedMyManager = [[\cf12 self\cf13  \cf16 alloc\cf13 ] \cf16 init\cf13 ];
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \});
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf12 return\cf13  sharedMyManager;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 \}
+\f2\fs24 \cf0 \
+\
+
+\f1\fs28 \cf13 - (\cf12 id\cf13 )init \{
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf12 if\cf13  (\cf12 self\cf13  = [\cf12 super\cf13  \cf16 init\cf13 ]) \{
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13         \cf15 someProperty\cf13  = \cf11 @"Default Property Value"\cf13 ;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \}
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf12 return\cf13  \cf12 self\cf13 ;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 \}
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 -(\cf12 void\cf13 )hellofiunction
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 \{
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf16 NSLog\cf13 (\cf11 @"Hello how are you "\cf13 );
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 \}
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf12 @end
+\f2\fs24 \cf0 \
+============\
+\
+Now Calling from view Controller in iOS objective C like this\
+\
+
+\f1\fs28 \cf13 - (\cf12 void\cf13 )viewDidLoad \{
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     [\cf12 super\cf13  \cf16 viewDidLoad\cf13 ];
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf16 NSLog\cf13 (\cf11 @"Value of string is %@"\cf13 ,[[\cf15 singletonManager\cf13  \cf17 sharedManager\cf13 ] \cf17 someProperty\cf13 ]);
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf15 singletonManager\cf13  *profileSharedInstance =  [\cf15 singletonManager\cf13  \cf17 sharedManager\cf13 ];
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     profileSharedInstance.\cf15 someProperty\cf13  = \cf11 @"Ankit"\cf13 ;
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     [profileSharedInstance \cf17 hellofiunction\cf13 ];
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf16 NSLog\cf13 (\cf11 @"Value of string is %@"\cf13 ,[[\cf15 singletonManager\cf13  \cf17 sharedManager\cf13 ] \cf17 someProperty\cf13 ]);
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     [[\cf15 singletonManager\cf13  \cf17 sharedManager\cf13 ] \cf17 hellofiunction\cf13 ];
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf15 singletonManager\cf13  *\ulth \ulc13 p\ulnone rofileSharedInstance1 =  [[\cf15 singletonManager\cf13  \cf16 alloc\cf13 ]\cf17 \ulth \ulc17 i\ulnone nit\cf13 ];
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13     \cf18 // Do any additional setup after loading the view, typically from a nib.
+\f2\fs24 \cf0 \
+
+\f1\fs28 \cf13 \}\
+========\
+\
+\
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\fs36 \cf13 Singleton Class in Swift
+\fs28 \
+\
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f3\b\fs32 \cf19 \cb20 \expnd0\expndtw0\kerning0
+final class Singleton\{\cb1 \
+\cb20   static let sharedInstance = Singleton()\cb1 \
+\cb20   private init() \{\}\cb1 \
+\cb20 \}
+\f1\b0 \
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\fs28 \cf13 \cb10 \kerning1\expnd0\expndtw0 \
+=====\
+3. 
+\fs36 Shallow and Deep Copy
+\fs28 \
+https://medium.freecodecamp.org/deep-copy-vs-shallow-copy-and-how-you-can-use-them-in-swift-c623833f5ad3\
+\
+4. Most Imp Apple URL\
+\
+\
+5. Error Contain Following things\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl400\partightenfactor0
+\ls1\ilvl0
+\f4\b\fs33\fsmilli16800 \cf21 \cb22 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+domain
+\b0 \'a0is a high level grouping of errors.\cb1 \
+\ls1\ilvl0
+\b \cb22 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+code
+\b0 \'a0is used to distinguish different types of errors within a domain.\cb1 \
+\ls1\ilvl0
+\b \cb22 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+userInfo
+\b0 \'a0is an NSDictionary containing additional information about the error.\
+\pard\tx566\pardeftab720\sl400\partightenfactor0
+\cf21 \cb1 \
+6 Push notification Methodes\
+\
+\
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \cb10 \kerning1\expnd0\expndtw0 7. UUID and UDID\
+\pard\pardeftab720\sl460\qc\partightenfactor0
+
+\f5\fs40 \cf23 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl20\qc\partightenfactor0
+
+\fs2 \cf24 \cb25 down vote\cb1 \
+\cf23 \cb25 accepted\cb1 \
+\pard\pardeftab720\sl380\sa300\partightenfactor0
+
+\b\fs30 \cf26 \cb25 UUID (Universally Unique IDentifier)
+\b0 \'a0Is on a per-app basis. identifies an app on a device. As long as the user doesn\'92t completely delete the app, then this identifier will persist between app launches, and at least let you identify the same user using a particular app on a device. Unfortunately, if the user completely deletes and then reinstalls the app then the ID will change.\cb1 \
+
+\b \cb25 UDID (Unique Device Identifier)
+\b0 \'a0A sequence of 40 hexadecimal characters that uniquely identify an ios device. This value can be retrieved through iTunes, or found using UIDevice -uniqueIdentifier. Derived from hardware details like MAC address.\
+\
+8.\cb1 \
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \cb10 \kerning1\expnd0\expndtw0 \
+\
+\
+}
